@@ -8,6 +8,7 @@ export default function CabinDetail() {
   const [cabin, setCabin] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activeImg, setActiveImg] = useState(0)
+  const [lightbox, setLightbox] = useState(null)
   const [dates, setDates] = useState(null)
  
   useEffect(() => {
@@ -27,19 +28,74 @@ export default function CabinDetail() {
     </div>
   )
  
-  const images = cabin.images?.length ? cabin.images : ['/images/cabins/honeymoon-cabin/main.jpg']
+  const images = cabin.images?.length ? cabin.images : ['/images/gallery/cabin 2 exterior.jpg']
+  const total = images.length
+ 
+  const prevImg = () => setActiveImg(i => (i - 1 + total) % total)
+  const nextImg = () => setActiveImg(i => (i + 1) % total)
+  const prevLightbox = () => setLightbox(i => (i - 1 + total) % total)
+  const nextLightbox = () => setLightbox(i => (i + 1) % total)
  
   return (
     <div className="bg-sand-50 min-h-screen">
  
-      {/* Big hero image */}
-      <div className="w-full bg-sand-200 overflow-hidden" style={{ height: '65vh', maxHeight: 620 }}>
+      {/* Main image with arrows */}
+      <div className="w-full bg-sand-200 relative overflow-hidden" style={{ height: '65vh', maxHeight: 620 }}>
         <img
           src={images[activeImg]}
           alt={cabin.name}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain cursor-pointer"
+          onClick={() => setLightbox(activeImg)}
         />
+ 
+        {/* Prev arrow */}
+        {total > 1 && (
+          <button
+            onClick={prevImg}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/65 text-white transition-colors"
+            aria-label="Previous image"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        )}
+ 
+        {/* Next arrow */}
+        {total > 1 && (
+          <button
+            onClick={nextImg}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-black/40 hover:bg-black/65 text-white transition-colors"
+            aria-label="Next image"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        )}
+ 
+        {/* Image counter */}
+        {total > 1 && (
+          <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs px-2.5 py-1">
+            {activeImg + 1} / {total}
+          </div>
+        )}
       </div>
+ 
+      {/* Thumbnails */}
+      {total > 1 && (
+        <div className="flex gap-2 px-5 sm:px-8 pt-3 pb-1 overflow-x-auto max-w-7xl mx-auto">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveImg(i)}
+              className={`shrink-0 overflow-hidden transition-all ${activeImg === i ? 'ring-2 ring-navy-600 ring-offset-1' : 'opacity-50 hover:opacity-80'}`}
+            >
+              <img src={img} alt="" className="h-12 w-16 object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
  
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10">
  
@@ -50,29 +106,14 @@ export default function CabinDetail() {
           <span className="text-sand-700">{cabin.name}</span>
         </div>
  
-        {/* Thumbnails */}
-        {images.length > 1 && (
-          <div className="flex gap-2 mb-10 flex-wrap">
-            {images.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveImg(i)}
-                className={`overflow-hidden transition-all ${activeImg === i ? 'ring-2 ring-navy-600 ring-offset-1' : 'opacity-50 hover:opacity-80'}`}
-              >
-                <img src={img} alt="" className="h-14 w-20 object-cover" />
-              </button>
-            ))}
-          </div>
-        )}
- 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
  
-          {/* Left — details */}
+          {/* Left */}
           <div className="lg:col-span-2 space-y-8">
  
             <div className="border-b border-sand-200 pb-8">
               <span className="label mb-2">
-                {cabin.season === 'all_season' ? 'Available year-round' : cabin.season + ' cabin'}
+                {cabin.season === 'all_season' ? 'Available year-round' : cabin.season === 'summer' ? 'Summer cabin' : 'Winter cabin'}
               </span>
               <div className="flex items-start justify-between gap-4 flex-wrap">
                 <h1 className="text-4xl sm:text-5xl" style={{ fontFamily: 'DM Serif Display, serif' }}>
@@ -114,7 +155,7 @@ export default function CabinDetail() {
                   'Direct lake access',
                   'Fire pit at each cabin',
                   'BBQ grill at each cabin',
-                  'Firewood available — $10/crate',
+                  'Firewood available $10 per crate',
                   'Outhouse on site',
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -147,7 +188,7 @@ export default function CabinDetail() {
                       <span>Total</span>
                       <span>${(cabin.price_per_night * dates.nights).toFixed(2)} CAD</span>
                     </div>
-                    <p className="text-sand-400 text-[11px] mt-1.5">50% deposit charged at booking</p>
+                    <p className="text-sand-400 text-[11px] mt-1.5">Full payment charged at booking</p>
                   </div>
                   <Link
                     to={`/book/${cabin.id}`}
@@ -173,7 +214,42 @@ export default function CabinDetail() {
  
         </div>
       </div>
+ 
+      {/* Lightbox */}
+      {lightbox !== null && (
+        <div className="fixed inset-0 bg-black/92 z-50 flex items-center justify-center p-4" onClick={() => setLightbox(null)}>
+          <button
+            onClick={e => { e.stopPropagation(); prevLightbox() }}
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white text-2xl leading-none transition-colors"
+          >
+            &#8249;
+          </button>
+          <button
+            onClick={e => { e.stopPropagation(); nextLightbox() }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white text-2xl leading-none transition-colors"
+          >
+            &#8250;
+          </button>
+          <div className="relative inline-block" onClick={e => e.stopPropagation()}>
+            <img
+              src={images[lightbox]}
+              alt={cabin.name}
+              className="block h-auto"
+              style={{ maxHeight: '85vh', maxWidth: '80vw' }}
+            />
+            <button
+              onClick={() => setLightbox(null)}
+              className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-black/60 hover:bg-black/90 text-white text-lg leading-none transition-colors"
+            >
+              &times;
+            </button>
+            <p className="text-white/40 text-xs text-center mt-2">
+              {lightbox + 1} / {total}
+            </p>
+          </div>
+        </div>
+      )}
+ 
     </div>
   )
 }
- 

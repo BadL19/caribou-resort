@@ -10,7 +10,7 @@ cabins_data = [
         "season": "all_season",
         "description": "Our largest cabin on the property. Cabin 2 has a loft, a full kitchen, a full bathroom, and a comfortable living area. Plenty of space for a group or family. Has its own fire pit and BBQ right on the property with direct access to the lake.",
         "short_description": "Our largest cabin. Loft, full kitchen and full bathroom.",
-        "price_per_night": 120.00,
+        "price_per_night": 150.00,
         "amenities": [
             "Loft",
             "Full kitchen",
@@ -34,7 +34,7 @@ cabins_data = [
         "season": "summer",
         "description": "A spacious cabin with three separate bedrooms, a full kitchen, a deck, and a large living area. Great for families or a group of friends. No running water but the shared shower house is nearby and there is an outhouse on site.",
         "short_description": "Three bedrooms, full kitchen, and a deck. Great for families or groups.",
-        "price_per_night": 160.00,
+        "price_per_night": 150.00,
         "amenities": [
             "3 separate bedrooms",
             "Full kitchen",
@@ -58,7 +58,7 @@ cabins_data = [
             "/images/gallery/cabin 5 deck.jpg",
             "/images/gallery/cabin 5 deck 2.jpg",
         ],
-        "max_guests": 8,
+        "max_guests": 6,
         "bedrooms": 3,
     },
     {
@@ -66,7 +66,7 @@ cabins_data = [
         "season": "all_season",
         "description": "A comfortable cabin with a loft, two bedrooms, a kitchen, and a living area. No running water, outhouse on site, and the shared shower house is on the property. Great fire pit spot and a BBQ for evenings outside.",
         "short_description": "Loft, two bedrooms and a kitchen. A comfortable stay close to the water.",
-        "price_per_night": 140.00,
+        "price_per_night": 150.00,
         "amenities": [
             "Loft",
             "2 bedrooms",
