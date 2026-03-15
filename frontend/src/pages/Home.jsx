@@ -77,14 +77,14 @@ export default function Home() {
       {/* Hero */}
       <section className="relative grid grid-cols-1 lg:grid-cols-2">
         <div className="bg-navy-950 flex flex-col justify-center px-8 sm:px-14 lg:px-16 py-8 order-2 lg:order-1">
-          <span className="label text-navy-400 mb-4">Desbarats, Ontario — North Channel</span>
+          <span className="label text-navy-400 mb-4">Desbarats, Ontario</span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] mb-5" style={{ fontFamily: 'DM Serif Display, serif' }}>
             Caribou<br />
             <em className="italic text-rust-400">Log Cabin</em><br />
             Resort
           </h1>
           <p className="text-navy-300 text-sm leading-relaxed max-w-sm mb-6">
-            Three lakeside cabins in a quiet corner of Northern Ontario.
+            Three lakeside cabins in a quiet area of Northern Ontario.
             Fishing in the morning, bonfire in the evening.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -127,11 +127,10 @@ export default function Home() {
           <div className="space-y-4 text-sand-600 leading-relaxed text-sm sm:text-base">
             <p>
               Caribou Log Cabin Resort sits on a quiet stretch of shoreline in Desbarats,
-              Ontario. Three cabins, a shared shower house, and direct access to the
-              North Channel of Lake Huron.
+              Ontario. Three cabins, a shared shower house right on Caribou Lake.
             </p>
             <p>
-              The fishing is the main draw. Walleye, bass, and pike are all here. Spend
+              The fishing is the main draw. bass, pickerel, and catfish are all here. Spend
               your mornings on the water and your evenings around your own fire pit.
             </p>
             <p>
