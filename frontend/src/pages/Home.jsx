@@ -172,7 +172,7 @@ export default function Home() {
           {
             img: '/images/gallery/fish.jpg',
             title: 'Fishing on the Lake',
-            body: 'Walleye, bass, and pike. Cast from shore or head out on the water. The lake is right there.',
+            body: 'bass, pickerel, and catfish. Cast from shore or head out on the water. The lake is right there.',
           },
           {
             img: '/images/gallery/fire.jpg',
@@ -180,7 +180,7 @@ export default function Home() {
             body: 'Every cabin has its own fire pit on the water. Firewood available on site for $10 per milk crate.',
           },
           {
-            img: '/images/gallery/lake 2.jpg',
+            img: '/images/gallery/stars.jpg',
             title: 'Quiet Nights',
             body: "Away from city lights and city noise. The kind of quiet that's hard to find.",
           },
@@ -200,7 +200,7 @@ export default function Home() {
       {/* CTA */}
       <section className="relative py-20 sm:py-24 overflow-hidden">
         <img
-          src="/images/gallery/lake 3.jpg"
+          src="/images/gallery/lake.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -209,7 +209,7 @@ export default function Home() {
           <h2 className="text-3xl sm:text-5xl text-white mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
             Ready to book?
           </h2>
-          <p className="text-navy-300 mb-8 text-sm sm:text-base">
+          <p className="text-black-300 mb-8 text-sm sm:text-base">
             Summer weekends fill up fast. Minimum 2-night stay.
           </p>
           <Link to="/cabins" className="btn-rust inline-block text-sm px-8 sm:px-10 py-3.5">
