@@ -268,16 +268,16 @@ export default function Booking() {
  
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
  
-        {/* Summary — top on mobile, right on desktop */}
-        <div className="lg:col-span-2 lg:order-2">
+        {/* Summary — right on desktop, hidden on mobile (shown inline below) */}
+        <div className="hidden lg:block lg:col-span-2 lg:order-2">
           <div className="lg:sticky lg:top-24">
             <Summary cabin={cabin} dates={dates} nights={nights} total={total} />
           </div>
         </div>
- 
-        {/* Form — bottom on mobile, left on desktop */}
+
+        {/* Form — left on desktop, full width on mobile */}
         <div className="lg:col-span-3 lg:order-1">
- 
+
           {step === 1 && (
             <div className="bg-white border border-sand-200 shadow-sm p-6 md:p-8">
               <h2 className="text-sand-800 text-xl mb-6" style={{ fontFamily: 'DM Serif Display, serif' }}>
@@ -285,7 +285,12 @@ export default function Booking() {
               </h2>
               <BookingCalendar cabinId={id} onDatesSelected={setDates} selectedDates={dates} />
               {dates && nights < 2 && <p className="text-red-500 text-sm mt-2">Minimum 2 nights required.</p>}
- 
+
+              {/* Summary inline — only visible on mobile, right after calendar */}
+              <div className="lg:hidden mt-4">
+                <Summary cabin={cabin} dates={dates} nights={nights} total={total} />
+              </div>
+
               <hr className="border-sand-100 my-6" />
  
               <form onSubmit={handleDetails} className="space-y-4">
