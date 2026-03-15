@@ -75,8 +75,8 @@ export default function Home() {
     <div className="bg-sand-50">
  
       {/* Hero */}
-      <section className="relative h-[82vh] grid grid-cols-1 lg:grid-cols-2">
-        <div className="bg-navy-950 flex flex-col justify-center px-8 sm:px-14 lg:px-16 py-10 order-2 lg:order-1">
+      <section className="relative grid grid-cols-1 lg:grid-cols-2">
+        <div className="bg-navy-950 flex flex-col justify-center px-8 sm:px-14 lg:px-16 py-8 order-2 lg:order-1">
           <span className="label text-navy-400 mb-4">Desbarats, Ontario — North Channel</span>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white leading-[1.05] mb-5" style={{ fontFamily: 'DM Serif Display, serif' }}>
             Caribou<br />
@@ -95,7 +95,7 @@ export default function Home() {
           </div>
           <p className="text-navy-600 text-xs mt-5">239 Carter Side Rd &mdash; Desbarats, ON</p>
         </div>
-        <div className="order-1 lg:order-2 min-h-[40vh] lg:min-h-full">
+        <div className="order-1 lg:order-2 h-[40vh] lg:h-[82vh]">
           <Slideshow />
         </div>
       </section>
