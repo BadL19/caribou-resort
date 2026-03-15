@@ -99,6 +99,55 @@ function PaymentForm({ total, onSuccess }) {
   )
 }
  
+function Summary({ cabin, dates, nights, total }) {
+  return (
+    <div className="bg-white border border-sand-200 shadow-sm p-5">
+      {cabin?.images?.[0] && (
+        <img src={cabin.images[0]} alt={cabin.name} className="w-full h-36 object-cover mb-4" />
+      )}
+      {cabin && (
+        <>
+          <h3 className="text-sand-800 text-base mb-0.5" style={{ fontFamily: 'DM Serif Display, serif' }}>
+            {cabin.name}
+          </h3>
+          <p className="text-sand-400 text-xs mb-4">Up to {cabin.max_guests} guests</p>
+        </>
+      )}
+ 
+      {dates && nights >= 2 ? (
+        <div className="space-y-2 text-sm border-t border-sand-100 pt-4">
+          <div className="flex justify-between text-sand-600">
+            <span>Check-in</span>
+            <span className="font-medium">{new Date(dates.start).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+          </div>
+          <div className="flex justify-between text-sand-600">
+            <span>Check-out</span>
+            <span className="font-medium">{new Date(dates.end).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+          </div>
+          <div className="flex justify-between text-sand-600">
+            <span>${cabin?.price_per_night} x {nights} nights</span>
+            <span>${total.toFixed(2)}</span>
+          </div>
+          <div className="border-t border-sand-100 pt-2 flex justify-between font-bold text-sand-800">
+            <span>Total</span>
+            <span>${total.toFixed(2)} CAD</span>
+          </div>
+        </div>
+      ) : (
+        <p className="text-sand-400 text-sm italic border-t border-sand-100 pt-4">
+          Select dates to see your total.
+        </p>
+      )}
+ 
+      <div className="mt-5 pt-4 border-t border-sand-100 space-y-1.5 text-xs text-sand-400">
+        <p>Full payment required at booking</p>
+        <p>2-night minimum stay</p>
+        <p>Check-in 3:00 PM · Check-out 11:00 AM</p>
+      </div>
+    </div>
+  )
+}
+ 
 export default function Booking() {
   const { id } = useParams()
   const location = useLocation()
@@ -119,9 +168,7 @@ export default function Booking() {
  
   const nights = dates?.nights || 0
   const total = cabin ? cabin.price_per_night * nights : 0
- 
   const fmt = d => (d instanceof Date ? d : new Date(d)).toISOString().split('T')[0]
- 
   const formComplete = dates && nights >= 2 && form.guest_name && form.email && form.phone && form.phone.replace(/\D/g, '').length >= 10
  
   const handleDetails = async (e) => {
@@ -166,7 +213,6 @@ export default function Booking() {
     </div>
   )
  
-  // Confirmed
   if (step === 3 && successData) {
     const { form: f, dates: d, cabin: c, total: t } = successData
     return (
@@ -213,7 +259,7 @@ export default function Booking() {
         </h1>
         {cabin && (
           <p className="text-sand-400 text-sm mt-1">
-            {cabin.name} &middot; <span className="text-navy-600 font-semibold">${cabin.price_per_night}/night</span>
+            {cabin.name} · <span className="text-navy-600 font-semibold">${cabin.price_per_night}/night</span>
           </p>
         )}
       </div>
@@ -222,8 +268,15 @@ export default function Booking() {
  
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
  
-        {/* Left */}
-        <div className="lg:col-span-3">
+        {/* Summary — top on mobile, right on desktop */}
+        <div className="lg:col-span-2 lg:order-2">
+          <div className="lg:sticky lg:top-24">
+            <Summary cabin={cabin} dates={dates} nights={nights} total={total} />
+          </div>
+        </div>
+ 
+        {/* Form — bottom on mobile, left on desktop */}
+        <div className="lg:col-span-3 lg:order-1">
  
           {step === 1 && (
             <div className="bg-white border border-sand-200 shadow-sm p-6 md:p-8">
@@ -344,58 +397,9 @@ export default function Booking() {
               )}
             </div>
           )}
+ 
         </div>
- 
-        {/* Summary sidebar */}
-        <div className="lg:col-span-2">
-          <div className="bg-white border border-sand-200 shadow-sm p-5 sticky top-24">
-            {cabin?.images?.[0] && (
-              <img src={cabin.images[0]} alt={cabin.name} className="w-full h-36 object-cover mb-4" />
-            )}
-            {cabin && (
-              <>
-                <h3 className="text-sand-800 text-base mb-0.5" style={{ fontFamily: 'DM Serif Display, serif' }}>
-                  {cabin.name}
-                </h3>
-                <p className="text-sand-400 text-xs mb-4">Up to {cabin.max_guests} guests</p>
-              </>
-            )}
- 
-            {dates && nights >= 2 ? (
-              <div className="space-y-2 text-sm border-t border-sand-100 pt-4">
-                <div className="flex justify-between text-sand-600">
-                  <span>Check-in</span>
-                  <span className="font-medium">{new Date(dates.start).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                </div>
-                <div className="flex justify-between text-sand-600">
-                  <span>Check-out</span>
-                  <span className="font-medium">{new Date(dates.end).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                </div>
-                <div className="flex justify-between text-sand-600">
-                  <span>${cabin?.price_per_night} x {nights} nights</span>
-                  <span>${total.toFixed(2)}</span>
-                </div>
-                <div className="border-t border-sand-100 pt-2 flex justify-between font-bold text-sand-800">
-                  <span>Total</span>
-                  <span>${total.toFixed(2)} CAD</span>
-                </div>
-              </div>
-            ) : (
-              <p className="text-sand-400 text-sm italic border-t border-sand-100 pt-4">
-                Select dates above to see your total.
-              </p>
-            )}
- 
-            <div className="mt-5 pt-4 border-t border-sand-100 space-y-1.5 text-xs text-sand-400">
-              <p>Full payment required at booking</p>
-              <p>2-night minimum stay</p>
-              <p>Check-in 3:00 PM &middot; Check-out 11:00 AM</p>
-            </div>
-          </div>
-        </div>
- 
       </div>
     </div>
   )
 }
- 
