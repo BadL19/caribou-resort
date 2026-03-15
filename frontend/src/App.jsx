@@ -7,7 +7,7 @@ import CabinDetail from './pages/CabinDetail'
 import Gallery from './pages/Gallery'
 import FAQ from './pages/FAQ'
 import Booking from './pages/Booking'
-import AdminDashboard from './pages/AdminDashboard'
+
 
 export default function App() {
   return (
@@ -22,7 +22,6 @@ export default function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/book/:id" element={<Booking />} />
-            <Route path="/admin" element={<AdminDashboard />} />
           </Routes>
         </main>
         <Footer />

@@ -95,7 +95,6 @@ export default function Footer() {
  
       <div className="border-t border-navy-900 max-w-7xl mx-auto px-5 sm:px-8 py-5 flex justify-between items-center">
         <p className="text-navy-700 text-xs">&copy; {year} Caribou Log Cabin Resort</p>
-        <Link to="/admin" className="text-navy-800 hover:text-navy-600 text-xs transition-colors">Admin</Link>
       </div>
     </footer>
   )
