@@ -23,7 +23,7 @@ def send_booking_confirmation(
 ):
     """Send confirmation email to guest and notification to admin."""
     if not resend.api_key:
-        print("⚠️  RESEND_API_KEY not set — skipping email")
+        print("RESEND_API_KEY not set — skipping email")
         return
 
     notes_html = f"<p><strong>Special Requests:</strong> {notes}</p>" if notes else ""
@@ -55,12 +55,12 @@ def send_booking_confirmation(
         <div class="header">
           <div class="badge"> Booking Confirmed</div>
           <h1>{RESORT_NAME}</h1>
-          <p>Northern Ontario, Canada</p>
+          <p>Desbarats Ontario, Canada</p>
         </div>
         <div class="body">
           <p class="greeting">Dear {guest_name},</p>
           <p style="color:#5a3d28;line-height:1.6;">
-            Your reservation has been confirmed and we're excited to welcome you to the wilderness! 
+            Your reservation has been confirmed and we're excited to welcome you to the Caribou Log Cabin Resort! 
             Please keep this email for your records.
           </p>
           <div class="details-box">
@@ -73,22 +73,21 @@ def send_booking_confirmation(
           </div>
           {notes_html}
           <div class="info-block">
-            ✅ A 50% deposit has been charged to your card.<br>
+            A 50% deposit has been charged to your card.<br>
             The remaining balance will be collected on arrival.
           </div>
           <div class="info-block" style="background:#fff8e8;border-color:#ecc06d;color:#7c3c18;">
-             Directions and access code will be sent 48 hours before your check-in.<br>
-             Questions? Call us at (705) 555-0123
+            <br>
+            Questions? Call us at (705) 257-5434
           </div>
           <p style="color:#5a3d28;font-size:14px;line-height:1.6;margin-top:24px;">
-            We can't wait to share the magic of the boreal forest with you. 
             Pack layers, bring bug spray in summer, and prepare for the best stargazing of your life.
           </p>
           <p style="color:#5a3d28;font-size:14px;">Warm regards,<br><strong>The Caribou Log Cabin Team</strong></p>
         </div>
         <div class="footer">
-          <p>© {RESORT_NAME} · Northern Ontario, Canada</p>
-          <p>📧 info@cariboulogcabin.ca ·  (705) 555-0123</p>
+          <p>© {RESORT_NAME} · Desbarats Ontario, Canada</p>
+          <p>info@cariboulogcabin.ca ·  (705)257-5434</p>
         </div>
       </div>
     </body>

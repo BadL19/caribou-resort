@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
-from routers import cabins, bookings, admin, payments
+from routers import cabins, bookings, payments
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,7 +22,6 @@ app.add_middleware(
 
 app.include_router(cabins.router)
 app.include_router(bookings.router)
-app.include_router(admin.router)
 app.include_router(payments.router)
 
 
