@@ -5,8 +5,8 @@ from typing import Optional
 resend.api_key = os.getenv("RESEND_API_KEY", "")
 
 RESORT_NAME = "Caribou Log Cabin Resort"
-FROM_EMAIL = os.getenv("FROM_EMAIL", "reservations@cariboulogcabin.ca")
-ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@cariboulogcabin.ca")
+FROM_EMAIL = os.getenv("FROM_EMAIL", "cariboulogcabinresort@gmail.com")
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "cariboulogcabinresort@gmail.com")
 
 
 def send_booking_confirmation(
