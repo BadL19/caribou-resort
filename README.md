@@ -1,19 +1,10 @@
-# 🌲 Caribou Log Cabin Resort
+# Caribou Log Cabin Resort
 
 Full-stack cabin booking website — React (Vite) + Tailwind frontend, FastAPI + PostgreSQL backend.
 
 ---
 
-## 🏕️ Cabins
 
-| Cabin | Season | Price/Night |
-|-------|--------|-------------|
-| Electric Heat Cabin | Winter | $145 |
-| Rustic Winter Cabin | Winter | $95 |
-| Rustic Summer Cabin 1 | Summer | $75 |
-| Rustic Summer Cabin 2 | Summer | $75 |
-
----
 
 ## 🚀 Quick Start
 
@@ -149,7 +140,6 @@ No code changes needed — just replace the files.
 | Gallery | `/gallery` | Masonry grid with category filter + lightbox |
 | FAQ | `/faq` | Accordion FAQ (15+ questions) |
 | Booking | `/book/:id` | 3-step: Details → Stripe Payment → Confirmed |
-| Admin | `/admin` | All bookings, delete, add Airbnb blocks |
 
 ---
 
@@ -164,10 +154,6 @@ No code changes needed — just replace the files.
 | POST | `/bookings` | Direct booking (no payment) |
 | POST | `/payments/create-payment-intent` | Start Stripe checkout |
 | POST | `/payments/webhook` | Stripe webhook handler |
-| GET | `/admin/bookings` | All bookings |
-| POST | `/admin/airbnb-booking` | Block Airbnb dates |
-| DELETE | `/admin/bookings/{id}` | Delete booking |
-| POST | `/admin/sync-ical/{id}` | Sync Airbnb iCal feed |
 
 ---
 
@@ -185,7 +171,6 @@ caribou-resort/
 │   │   ├── cabins.py        # GET /cabins, /cabins/{id}, availability
 │   │   ├── bookings.py      # POST /bookings (direct, no payment)
 │   │   ├── payments.py      # Stripe PaymentIntent + webhook
-│   │   └── admin.py         # Admin dashboard endpoints
 │   ├── schemas/schemas.py   # Pydantic request/response models
 │   ├── requirements.txt
 │   └── .env.example
@@ -208,7 +193,6 @@ caribou-resort/
         │   ├── Gallery.jsx           # Local images + category filter
         │   ├── FAQ.jsx
         │   ├── Booking.jsx           # 3-step Stripe checkout
-        │   └── AdminDashboard.jsx
         ├── services/api.js
         └── App.jsx
 ```
