@@ -155,7 +155,7 @@ export default function Booking() {
   const [dates, setDates] = useState(location.state?.dates || null)
   const [loading, setLoading] = useState(!cabin)
   const [step, setStep] = useState(1)
-  const [form, setForm] = useState({ guest_name: '', email: '', phone: '', notes: '' })
+  const [form, setForm] = useState({ guest_name: '', email: '', phone: '', num_guests: '', notes: '' })
   const [formError, setFormError] = useState('')
   const [intentData, setIntentData] = useState(null)
   const [creatingIntent, setCreatingIntent] = useState(false)
@@ -169,7 +169,7 @@ export default function Booking() {
   const nights = dates?.nights || 0
   const total = cabin ? cabin.price_per_night * nights : 0
   const fmt = d => (d instanceof Date ? d : new Date(d)).toISOString().split('T')[0]
-  const formComplete = dates && nights >= 2 && form.guest_name && form.email && form.phone && form.phone.replace(/\D/g, '').length >= 10
+  const formComplete = dates && nights >= 2 && form.guest_name && form.email && form.phone && form.phone.replace(/\D/g, '').length >= 10 && form.num_guests && parseInt(form.num_guests) >= 1
  
   const handleDetails = async (e) => {
     e.preventDefault()
@@ -187,6 +187,7 @@ export default function Booking() {
         guest_name: form.guest_name,
         email: form.email,
         phone: form.phone,
+        num_guests: parseInt(form.num_guests),
         notes: form.notes || null,
         start_date: fmt(dates.start),
         end_date: fmt(dates.end),
@@ -240,7 +241,7 @@ export default function Booking() {
             </div>
           </div>
           <div className="bg-amber-50 border border-amber-200 p-4 text-sm text-amber-800 mb-6 text-left">
-            Questions? Call (705) 555-0123.
+            Questions? Call us at (705)257-5434.
           </div>
           <Link to="/" className="btn-dark block w-full text-center py-3">Return to Home</Link>
         </div>
@@ -268,16 +269,16 @@ export default function Booking() {
  
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
  
-        {/* Summary — right on desktop, hidden on mobile (shown inline below) */}
-        <div className="hidden lg:block lg:col-span-2 lg:order-2">
+        {/* Summary — top on mobile, right on desktop */}
+        <div className="lg:col-span-2 lg:order-2">
           <div className="lg:sticky lg:top-24">
             <Summary cabin={cabin} dates={dates} nights={nights} total={total} />
           </div>
         </div>
-
-        {/* Form — left on desktop, full width on mobile */}
+ 
+        {/* Form — bottom on mobile, left on desktop */}
         <div className="lg:col-span-3 lg:order-1">
-
+ 
           {step === 1 && (
             <div className="bg-white border border-sand-200 shadow-sm p-6 md:p-8">
               <h2 className="text-sand-800 text-xl mb-6" style={{ fontFamily: 'DM Serif Display, serif' }}>
@@ -285,12 +286,7 @@ export default function Booking() {
               </h2>
               <BookingCalendar cabinId={id} onDatesSelected={setDates} selectedDates={dates} />
               {dates && nights < 2 && <p className="text-red-500 text-sm mt-2">Minimum 2 nights required.</p>}
-
-              {/* Summary inline — only visible on mobile, right after calendar */}
-              <div className="lg:hidden mt-4">
-                <Summary cabin={cabin} dates={dates} nights={nights} total={total} />
-              </div>
-
+ 
               <hr className="border-sand-100 my-6" />
  
               <form onSubmit={handleDetails} className="space-y-4">
@@ -310,12 +306,26 @@ export default function Booking() {
                       className="input-field" />
                   </div>
                 </div>
-                <div>
-                  <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Email Address *</label>
-                  <input type="email" value={form.email} required
-                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                    placeholder="jane@example.com"
-                    className="input-field" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Email Address *</label>
+                    <input type="email" value={form.email} required
+                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                      placeholder="jane@example.com"
+                      className="input-field" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Number of Guests *</label>
+                    <input type="number" value={form.num_guests} required min={1} max={5}
+                      onChange={e => setForm(f => ({ ...f, num_guests: e.target.value }))}
+                      placeholder="e.g. 2"
+                      className="input-field" />
+                    {form.num_guests && parseInt(form.num_guests) > 5 && (
+                      <p className="text-red-500 text-xs mt-1">
+                        Maximum 5 guests. For larger groups please call us at (705)257-5434.
+                      </p>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Special Requests</label>
@@ -344,7 +354,9 @@ export default function Booking() {
                   <p className="text-sand-400 text-xs text-center">
                     {form.phone && form.phone.replace(/\D/g, '').length < 10
                       ? 'Please enter a valid phone number.'
-                      : 'Fill in your dates, name, phone, and email to continue.'}
+                      : form.num_guests && parseInt(form.num_guests) > 5
+                      ? 'Maximum 5 guests. Please call (705)257-5434 for larger groups.'
+                      : 'Fill in your dates, name, phone, email, and number of guests to continue.'}
                   </p>
                 )}
               </form>
@@ -408,3 +420,4 @@ export default function Booking() {
     </div>
   )
 }
+ 
