@@ -87,7 +87,7 @@ def send_booking_confirmation(
         </div>
         <div class="footer">
           <p>© {RESORT_NAME} · Desbarats Ontario, Canada</p>
-          <p>info@cariboulogcabin.ca ·  (705)257-5434</p>
+          <p>cariboulogcabinresort@gmail.com ·  (705)257-5434</p>
         </div>
       </div>
     </body>
