@@ -1,12 +1,12 @@
-# 🏕️ Caribou Log Cabin Resort
+# Caribou Log Cabin Resort
 
-Full-stack cabin booking website for **Caribou Log Cabin Resort**, a lakeside property in Desbarats, Ontario.
+Full-stack cabin booking website for Caribou Log Cabin Resort, a lakeside property in Desbarats, Ontario.
 
-🔗 Live Site: https://caribou-resort1.onrender.com
+Live site: https://caribou-resort1.onrender.com
 
 ---
 
-## 🌲 About the Resort
+##  About the Resort
 
 Three private lakeside cabins located on Caribou Lake in Desbarats, Ontario.
 
@@ -15,14 +15,14 @@ Enjoy:
 - Bonfires
 - Quiet nature stays
 
-📍 Address: 239 Carter Side Rd, Desbarats, ON  
-📞 Phone: (705) 257-5434  
-📧 Email: cariboulogcabinresort@gmail.com  
-⏱️ ~1 hour east of Sault Ste. Marie
+Address: 239 Carter Side Rd, Desbarats, ON  
+Phone: (705) 257-5434  
+Email: cariboulogcabinresort@gmail.com  
+1 hour east of Sault Ste. Marie
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React + Vite  
@@ -43,7 +43,7 @@ Enjoy:
 
 ---
 
-## ✨ Features
+##  Features
 
 - Browse 3 cabins with image galleries  
 - Real-time availability calendar  
@@ -59,7 +59,7 @@ Enjoy:
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 caribou-resort/
 ├── README.md
 ├── backend/
