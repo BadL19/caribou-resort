@@ -37,11 +37,7 @@ const photos = [
 ]
 
 export default function Gallery() {
-  const [lightbox, setLightbox] = useState(null)
 
-  const prev = () => setLightbox(l => (l - 1 + photos.length) % photos.length)
-  const next = () => setLightbox(l => (l + 1) % photos.length)
-  const close = () => setLightbox(null)
 
   return (
     <div className="bg-sand-50 min-h-screen">
@@ -61,7 +57,6 @@ export default function Gallery() {
             <div
               key={i}
               className="break-inside-avoid cursor-pointer overflow-hidden group"
-              onClick={() => setLightbox(i)}
             >
               <img
                 src={photo.url}
@@ -79,51 +74,6 @@ export default function Gallery() {
           </Link>
         </div>
       </div>
-
-      {lightbox !== null && (
-        <div
-          className="fixed inset-0 bg-black/92 z-50 flex items-center justify-center p-4"
-          onClick={close}
-        >
-          <button
-            onClick={e => { e.stopPropagation(); prev() }}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white text-2xl leading-none transition-colors"
-          >
-            &#8249;
-          </button>
-
-          <button
-            onClick={e => { e.stopPropagation(); next() }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white text-2xl leading-none transition-colors"
-          >
-            &#8250;
-          </button>
-
-          <div
-            className="relative inline-block"
-            onClick={e => e.stopPropagation()}
-          >
-            <img
-              src={photos[lightbox].url}
-              alt={photos[lightbox].caption}
-              className="block h-auto"
-              style={{ maxHeight: '85vh', maxWidth: '80vw' }}
-            />
-
-            <button
-              onClick={close}
-              className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-black/60 hover:bg-black/90 text-white text-lg leading-none transition-colors"
-            >
-              &times;
-            </button>
-
-            <p className="text-white/40 text-xs text-center mt-2">
-              {lightbox + 1} / {photos.length}
-            </p>
-          </div>
-        </div>
-      )}
-
     </div>
   )
 }

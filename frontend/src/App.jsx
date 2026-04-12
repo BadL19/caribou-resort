@@ -7,11 +7,22 @@ import CabinDetail from './pages/CabinDetail'
 import Gallery from './pages/Gallery'
 import FAQ from './pages/FAQ'
 import Booking from './pages/Booking'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
