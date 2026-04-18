@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // v2
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
+  baseURL: 'https://caribou-resort-production.up.railway.app',
   headers: {
     'Content-Type': 'application/json',
   },
