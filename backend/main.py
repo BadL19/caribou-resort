@@ -12,7 +12,7 @@ app.add_middleware(
         allow_origins=[
         "http://localhost:5173",
         "http://localhost:3000",
-        "caribou-git-main-badl19s-projects.vercel.app"
+        "https://caribou-sooty.vercel.app"
         "https://caribou-resort1.onrender.com",
     ],
     allow_credentials=True,
