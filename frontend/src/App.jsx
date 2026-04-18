@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -7,8 +8,6 @@ import CabinDetail from './pages/CabinDetail'
 import Gallery from './pages/Gallery'
 import FAQ from './pages/FAQ'
 import Booking from './pages/Booking'
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -17,7 +16,6 @@ function ScrollToTop() {
   }, [pathname])
   return null
 }
-
 
 export default function App() {
   return (

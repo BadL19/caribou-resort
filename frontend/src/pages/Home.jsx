@@ -84,7 +84,7 @@ export default function Home() {
             Resort
           </h1>
           <p className="text-navy-300 text-sm leading-relaxed max-w-sm mb-6">
-            Three lakeside cabins in a quiet area of Northern Ontario.
+            Four lakeside cabins in a quiet area of Northern Ontario.
             Fishing in the morning, bonfire in the evening.
           </p>
           <div className="flex flex-wrap gap-3">
@@ -102,11 +102,12 @@ export default function Home() {
  
       {/* Stats strip */}
       <section className="bg-white border-b border-sand-200">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 grid grid-cols-3 divide-x divide-sand-200">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-8 grid grid-cols-4 divide-x divide-sand-200">
           {[
-            { num: '3',   text: 'Lakeside cabins' },
+            { num: '4',   text: 'Lakeside cabins' },
             { num: '2',   text: 'Night minimum' },
             { num: '$10', text: 'Per crate of firewood' },
+            { num: '$30', text: 'Per propane tank' },
           ].map((s, i) => (
             <div key={i} className="px-4 sm:px-10 first:pl-0 last:pr-0">
               <span className="block text-2xl sm:text-4xl text-navy-800 mb-1" style={{ fontFamily: 'DM Serif Display, serif' }}>{s.num}</span>
@@ -127,7 +128,7 @@ export default function Home() {
           <div className="space-y-4 text-sand-600 leading-relaxed text-sm sm:text-base">
             <p>
               Caribou Log Cabin Resort sits on a quiet stretch of shoreline in Desbarats,
-              Ontario. Three cabins, a shared shower house right on Caribou Lake.
+              Ontario. Four cabins, a shared shower house right on Caribou Lake.
             </p>
             <p>
               The fishing is the main draw. bass, pickerel, and catfish are all here. Spend

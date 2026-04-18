@@ -322,7 +322,7 @@ export default function Booking() {
                       className="input-field" />
                     {form.num_guests && parseInt(form.num_guests) > 5 && (
                       <p className="text-red-500 text-xs mt-1">
-                        Maximum 5 guests. For larger groups please call us at (705)257-5434.
+                        Too many guests. Please call us at (705)257-5434 for larger groups.
                       </p>
                     )}
                   </div>

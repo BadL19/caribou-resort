@@ -57,7 +57,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-navy-500 text-sm leading-relaxed">
-            Three lakeside cabins on Caribou Lake.
+            Four lakeside cabins on Caribou Lake.
             Desbarats, Ontario.
           </p>
         </div>

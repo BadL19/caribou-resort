@@ -7,15 +7,27 @@ const faqs = [
     items: [
       {
         q: 'What cabins do you have?',
-        a: 'We have three cabins. Cabin 2 (Deluxe) is our largest it has a loft, full kitchen, and a full bathroom. Cabin 5 has three bedrooms, a full kitchen, and a deck. Cabin 6 has a loft, two bedrooms, and a kitchen. All cabins have a private fire pit and BBQ grill.',
+        a: 'We have four cabins. The Honeymoon Cabin is a cozy open cabin perfect for couples with one bedroom, a kitchen, and its own fire pit, summer only. Cabin 2 is our largest with a loft, full kitchen, and full bathroom available year-round. Cabin 5 has three bedrooms, a full kitchen, and a deck available summer only. Cabin 6 has a loft, two bedrooms, and a kitchen available year-round. All cabins have a private fire pit and BBQ grill.',
       },
       {
         q: 'Do the cabins have running water?',
-        a: 'Cabin 2 (Deluxe) has a full bathroom with running water. Cabin 5 and Cabin 6 do not have running water but the shared shower house on the property is available to all guests and each cabin has an outhouse on site.',
+        a: 'Cabin 2 has a full bathroom with running water. The Honeymoon Cabin, Cabin 5, and Cabin 6 do not have running water but the shared shower house on the property is available to all guests and each cabin has an outhouse on site.',
+      },
+      {
+        q: 'Which cabin is best for couples?',
+        a: 'The Honeymoon Cabin is our most private and intimate option. one bedroom, kitchen, and its own fire pit right on the water. It is available summer only. Cabin 2 is also great for couples who want more comfort with a full kitchen and bathroom.',
+      },
+      {
+        q: 'Which cabin is best for families or groups?',
+        a: 'Cabin 5 is the best option for families or groups with three separate bedrooms, a full kitchen, and a large deck. It fits up to 6 guests. Cabin 6 also works well for smaller groups with its loft and two bedrooms.',
       },
       {
         q: 'Do all cabins have a BBQ and fire pit?',
-        a: 'Yes. Every cabin has its own fire pit and BBQ grill. Firewood is available to buy on site for $10 per milk crate.',
+        a: 'Yes. Every cabin has its own fire pit and BBQ grill. Firewood is available for $10 per milk crate and propane tanks are available for $30 each.',
+      },
+      {
+        q: 'Which cabins are available year-round?',
+        a: 'Cabin 2 and Cabin 6 are available year-round. The Honeymoon Cabin and Cabin 5 are summer only.',
       },
     ],
   },
@@ -27,8 +39,8 @@ const faqs = [
         a: 'Yes. A shared shower house with hot water is on the property and available to all guests.',
       },
       {
-        q: 'How does the firewood work?',
-        a: 'Firewood is available to buy on site for $10 per milk crate. Every cabin has a fire pit and BBQ grill included with your stay.',
+        q: 'How does the firewood and propane work?',
+        a: 'Firewood is available on site for $10 per milk crate and propane tanks are available for $30 each. Every cabin has a fire pit and BBQ grill included with your stay.',
       },
     ],
   },
@@ -122,7 +134,7 @@ export default function FAQ() {
           </h3>
           <p className="text-navy-400 text-sm mb-6">We usually reply within a few hours.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="mailto:info@cariboulogcabin.ca" className="btn-rust text-sm px-6">Email Us</a>
+            <a href="mailto:cariboulogcabinresort@gmail.com" className="btn-rust text-sm px-6">Email Us</a>
             <Link to="/cabins" className="border border-navy-600 text-navy-300 hover:text-white hover:border-white text-sm px-6 py-3 transition-colors">
               Browse Cabins
             </Link>
@@ -132,4 +144,3 @@ export default function FAQ() {
     </div>
   )
 }
- 

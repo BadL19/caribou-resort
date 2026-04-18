@@ -45,10 +45,10 @@ def validate_booking_data(booking_data: PaymentIntentRequest, db: Session):
     if booking_data.start_date < date.today():
         raise HTTPException(status_code=400, detail="Start date cannot be in the past")
  
-    if booking_data.num_guests > MAX_GUESTS:
+    if booking_data.num_guests > cabin.max_guests:
         raise HTTPException(
             status_code=400,
-            detail=f"Maximum {MAX_GUESTS} guests allowed. For larger groups please contact us at (705)257-5434 to make arrangements."
+            detail=f"Maximum {cabin.max_guests} guests allowed for {cabin.name}. For larger groups please contact us at (705)257-5434 to make arrangements."
         )
  
     overlapping = db.query(Booking).filter(

@@ -7,7 +7,7 @@ export default function Cabins() {
   const [loading, setLoading] = useState(true)
  
   useEffect(() => {
-    getCabins().then(d => { setCabins(d); setLoading(false) }).catch(() => setLoading(false))
+    getCabins().then(d => { console.log('cabins:', d); setCabins(d); setLoading(false) }).catch(err => { console.log('error:', err); setLoading(false) })
   }, [])
  
   return (
@@ -21,7 +21,7 @@ export default function Cabins() {
             Our Cabins
           </h1>
           <p className="text-navy-300 mt-3 text-base max-w-lg">
-            Three cabins on Caribou Lake. Pick what fits.
+            Four cabins on Caribou Lake. Pick what fits.
           </p>
         </div>
       </div>
@@ -33,6 +33,7 @@ export default function Cabins() {
           <span>All cabins have a fire pit and BBQ</span>
           <span>Shared shower house on property</span>
           <span>Firewood $10 per milk crate</span>
+          <span>Propane $30 per bottle</span>
         </div>
       </div>
  

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // v2
 const api = axios.create({
-  baseURL: 'https://caribou-resort.onrender.com',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
   headers: {
     'Content-Type': 'application/json',
   },
