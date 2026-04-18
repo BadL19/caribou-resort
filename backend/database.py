@@ -10,7 +10,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:postgres123@loca
  
 # Add SSL for Supabase/production, skip for local
 connect_args = {}
-if "supabase.co" in DATABASE_URL or "render.com" in DATABASE_URL:
+if "supabase.com" in DATABASE_URL or "supabase.co" in DATABASE_URL or "render.com" in DATABASE_URL:
     connect_args = {"sslmode": "require"}
  
 engine = create_engine(DATABASE_URL, connect_args=connect_args)
