@@ -72,7 +72,16 @@ function PaymentForm({ total, onSuccess }) {
         <p className="text-sand-400 text-xs mt-1">Full payment required to confirm your booking.</p>
       </div>
  
-      <PaymentElement options={{ layout: 'tabs' }} />
+      <PaymentElement options={{
+        layout: 'tabs',
+        defaultValues: {
+          billingDetails: {
+            address: {
+              country: 'CA',
+            },
+          },
+        },
+      }} />
  
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 text-sm">{error}</div>
@@ -169,7 +178,7 @@ export default function Booking() {
   const nights = dates?.nights || 0
   const total = cabin ? cabin.price_per_night * nights : 0
   const fmt = d => (d instanceof Date ? d : new Date(d)).toISOString().split('T')[0]
-  const formComplete = dates && nights >= 2 && form.guest_name && form.email && form.phone && form.phone.replace(/\D/g, '').length >= 10 && form.num_guests && parseInt(form.num_guests) >= 1
+  const formComplete = dates && nights >= 2 && form.guest_name && form.email && form.phone && form.phone.replace(/\D/g, '').length >= 10 && form.num_guests && parseInt(form.num_guests) >= 1 && parseInt(form.num_guests) <= (cabin?.max_guests || 5)
  
   const handleDetails = async (e) => {
     e.preventDefault()
@@ -311,6 +320,13 @@ export default function Booking() {
                     <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Email Address *</label>
                     <input type="email" value={form.email} required
                       onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                      onInvalid={e => {
+                        e.preventDefault()
+                        if (e.target.validity.valueMissing) e.target.setCustomValidity('Please enter your email address.')
+                        else if (e.target.validity.typeMismatch) e.target.setCustomValidity('Please enter a valid email address (e.g. name@example.com).')
+                        else e.target.setCustomValidity('')
+                      }}
+                      onInput={e => e.target.setCustomValidity('')}
                       placeholder="jane@example.com"
                       className="input-field" />
                   </div>
@@ -320,7 +336,7 @@ export default function Booking() {
                       onChange={e => setForm(f => ({ ...f, num_guests: e.target.value }))}
                       placeholder="e.g. 2"
                       className="input-field" />
-                    {form.num_guests && parseInt(form.num_guests) > 5 && (
+                    {form.num_guests && parseInt(form.num_guests) > (cabin?.max_guests || 5) && (
                       <p className="text-red-500 text-xs mt-1">
                         Too many guests. Please call us at (705)257-5434 for larger groups.
                       </p>
@@ -354,7 +370,7 @@ export default function Booking() {
                   <p className="text-sand-400 text-xs text-center">
                     {form.phone && form.phone.replace(/\D/g, '').length < 10
                       ? 'Please enter a valid phone number.'
-                      : form.num_guests && parseInt(form.num_guests) > 5
+                      : form.num_guests && parseInt(form.num_guests) > (cabin?.max_guests || 5)
                       ? 'Maximum 5 guests. Please call (705)257-5434 for larger groups.'
                       : 'Fill in your dates, name, phone, email, and number of guests to continue.'}
                   </p>
@@ -387,6 +403,13 @@ export default function Booking() {
                         colorText: '#3a342a',
                         borderRadius: '2px',
                         fontFamily: 'DM Sans, sans-serif',
+                      },
+                    },
+                    defaultValues: {
+                      billingDetails: {
+                        address: {
+                          country: 'CA',
+                        },
                       },
                     },
                   }}
