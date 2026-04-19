@@ -3,9 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from routers import cabins, bookings, payments
 
+
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Caribou Log Cabin Resort API")
+app = FastAPI(title="Caribou Log Cabin Resort API", redirect_slashes=False)
 
 app.add_middleware(
     CORSMiddleware,
