@@ -293,7 +293,7 @@ export default function Booking() {
               <h2 className="text-sand-800 text-xl mb-6" style={{ fontFamily: 'DM Serif Display, serif' }}>
                 Select Dates & Enter Your Details
               </h2>
-              <BookingCalendar cabinId={id} onDatesSelected={setDates} selectedDates={dates} />
+              <BookingCalendar cabinId={id} onDatesSelected={setDates} selectedDates={dates} cabinSeason={cabin?.season} />
               {dates && nights < 2 && <p className="text-red-500 text-sm mt-2">Minimum 2 nights required.</p>}
  
               <hr className="border-sand-100 my-6" />
