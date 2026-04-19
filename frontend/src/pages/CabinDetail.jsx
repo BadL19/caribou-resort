@@ -175,7 +175,7 @@ export default function CabinDetail() {
               </h3>
               <p className="text-sand-400 text-xs mb-5">Select check-in and check-out</p>
  
-              <BookingCalendar cabinId={id} onDatesSelected={setDates} />
+              <BookingCalendar cabinId={id} onDatesSelected={setDates} cabinSeason={cabin.season} />
  
               {dates && dates.nights >= 2 && (
                 <div className="mt-5 space-y-3">

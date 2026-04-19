@@ -16,7 +16,7 @@ STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "")
  
 router = APIRouter(prefix="/payments", tags=["payments"])
  
-MAX_GUESTS = 5
+SUMMER_MONTHS = [5, 6, 7, 8, 9]  # May through September
  
  
 class PaymentIntentRequest(BaseModel):
@@ -44,6 +44,14 @@ def validate_booking_data(booking_data: PaymentIntentRequest, db: Session):
  
     if booking_data.start_date < date.today():
         raise HTTPException(status_code=400, detail="Start date cannot be in the past")
+ 
+    # Season validation
+    if cabin.season == 'summer':
+        if booking_data.start_date.month not in SUMMER_MONTHS or booking_data.end_date.month not in SUMMER_MONTHS:
+            raise HTTPException(
+                status_code=400,
+                detail=f"{cabin.name} is available May through September only."
+            )
  
     if booking_data.num_guests > cabin.max_guests:
         raise HTTPException(
