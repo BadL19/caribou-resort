@@ -7,7 +7,7 @@ const api = axios.create({
   },
 })
 
-export const getCabins = () => api.get('/cabins').then(r => r.data)
+export const getCabins = () => api.get('/cabins/').then(r => r.data)
 export const getCabin = (id) => api.get(`/cabins/${id}`).then(r => r.data)
 export const getCabinBookings = (id) => api.get(`/cabins/${id}/bookings`).then(r => r.data)
 export const checkAvailability = (id, startDate, endDate) =>
