@@ -15,7 +15,7 @@ export const checkAvailability = (id, startDate, endDate) =>
     params: { start_date: startDate, end_date: endDate }
   }).then(r => r.data)
 
-export const createBooking = (data) => api.post('/bookings', data).then(r => r.data)
+export const createBooking = (data) => api.post('/bookings/', data).then(r => r.data)
 
 export const createPaymentIntent = (data) =>
   api.post('/payments/create-payment-intent', data).then(r => r.data)
