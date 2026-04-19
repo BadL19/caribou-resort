@@ -3,7 +3,7 @@ import axios from 'axios'
 
 // v3
 const api = axios.create({
-  baseURL: 'https://caribou-resort-production.up.railway.app',
+  baseURL: 'https://caribou-resort-production.up.railway.app/',
   headers: {
     'Content-Type': 'application/json',
   },
