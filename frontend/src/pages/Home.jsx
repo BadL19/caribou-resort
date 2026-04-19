@@ -207,10 +207,10 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-navy-950/78" />
         <div className="relative z-10 max-w-2xl mx-auto text-center px-5">
-          <h2 className="text-3xl sm:text-5xl text-white mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+          <h2 className="text-3xl sm:text-5xl text-white mb-4" style={{ fontFamily: 'DM Serif Display, serif', textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
             Ready to book?
           </h2>
-          <p className="text-black-300 mb-8 text-sm sm:text-base">
+          <p className="text-white mb-8 text-sm sm:text-base" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>
             Summer weekends fill up fast. Minimum 2-night stay.
           </p>
           <Link to="/cabins" className="btn-rust inline-block text-sm px-8 sm:px-10 py-3.5">

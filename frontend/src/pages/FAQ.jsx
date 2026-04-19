@@ -134,7 +134,7 @@ export default function FAQ() {
           </h3>
           <p className="text-navy-400 text-sm mb-6">We usually reply within a few hours.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="mailto:cariboulogcabinresort@gmail.com" className="btn-rust text-sm px-6">Email Us</a>
+            <a href="https://mail.google.com/mail/?view=cm&to=cariboulogcabinresort@gmail.com&su=Cabin Inquiry" target="_blank" rel="noreferrer" className="btn-rust text-sm px-6">Email Us</a>
             <Link to="/cabins" className="border border-navy-600 text-navy-300 hover:text-white hover:border-white text-sm px-6 py-3 transition-colors">
               Browse Cabins
             </Link>
