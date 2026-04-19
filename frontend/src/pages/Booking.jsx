@@ -3,7 +3,7 @@ import { useParams, useLocation, Link } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import BookingCalendar from '../components/BookingCalendar'
-import { getCabin, createPaymentIntent } from '../services/api'
+import { getCabin, createPaymentIntent, createBooking } from '../services/api'
  
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '')
  
@@ -211,7 +211,21 @@ export default function Booking() {
     }
   }
  
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = async (paymentIntent) => {
+    try {
+      await createBooking({
+        cabin_id: parseInt(id),
+        guest_name: form.guest_name,
+        email: form.email,
+        phone: form.phone,
+        num_guests: parseInt(form.num_guests),
+        notes: form.notes || null,
+        start_date: fmt(dates.start),
+        end_date: fmt(dates.end),
+      })
+    } catch (err) {
+      console.log('Booking save error:', err)
+    }
     setSuccessData({ form, dates, cabin, total })
     setStep(3)
     window.scrollTo(0, 0)
