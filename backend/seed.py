@@ -23,7 +23,10 @@ cabins_data = [
             "Lake access",
         ],
         "images": [
-            "/images/gallery/honeymoon cabin.jpg",
+            "/images/gallery/honeymoon_ext.jpg",
+            "/images/gallery/honeymoon_ext2.jpg",
+            "/images/gallery/honeymoon_kitchen.jpg",
+            "/images/gallery/honeymoon_bed.jpg",
         ],
         "max_guests": 2,
         "bedrooms": 1,
