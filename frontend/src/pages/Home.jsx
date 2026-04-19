@@ -171,12 +171,12 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-3 gap-px bg-sand-200">
         {[
           {
-            img: '/images/gallery/fish.jpg',
+            img: '/images/gallery/fish 8.jpg',
             title: 'Fishing on the Lake',
             body: 'bass, pickerel, and catfish. Cast from shore or head out on the water. The lake is right there.',
           },
           {
-            img: '/images/gallery/fire.jpg',
+            img: '/images/gallery/fire 2.jpg',
             title: 'Bonfires with a View',
             body: 'Every cabin has its own fire pit on the water. Firewood available on site for $10 per milk crate.',
           },
