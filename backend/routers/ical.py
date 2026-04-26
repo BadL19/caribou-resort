@@ -71,7 +71,7 @@ def sync_airbnb_calendar(cabin_id: int, ical_url: str, db: Session = Depends(get
             continue
 
         summary = str(component.get('summary', ''))
-        if summary.lower() == 'not available' or summary.lower() == 'airbnb (not available)':
+        if 'caribou' in summary.lower():
             continue
 
         try:
