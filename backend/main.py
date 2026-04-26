@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from routers import cabins, bookings, payments
-from routers.calendar import router as calendar_router
+from routers.ical import router as calendar_router
 
 Base.metadata.create_all(bind=engine)
 
