@@ -5,7 +5,7 @@ from typing import Optional
 resend.api_key = os.getenv("RESEND_API_KEY", "")
  
 RESORT_NAME = "Caribou Log Cabin Resort"
-FROM_EMAIL = os.getenv("FROM_EMAIL", "onboarding@resend.dev")
+FROM_EMAIL = os.getenv("FROM_EMAIL", "cariboulogcabinresort@gmail.com")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "cariboulogcabinresort@gmail.com")
 SITE_URL = os.getenv("FRONTEND_URL", "https://caribou-resort1.onrender.com")
  

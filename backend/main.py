@@ -12,9 +12,9 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://localhost:3000",
         "https://caribou-sooty.vercel.app",
-        "https://caribou-resort1.onrender.com",
+        "https://cariboulogcabinresort.ca",
+        "https://www.cariboulogcabinresort.ca",
     ],
     allow_credentials=True,
     allow_methods=["*"],
