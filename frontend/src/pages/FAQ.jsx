@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+
  
 const faqs = [
   {
@@ -127,20 +127,6 @@ export default function FAQ() {
             </div>
           </div>
         ))}
- 
-        <div className="mt-12 bg-navy-900 p-8 text-center">
-          <h3 className="text-xl text-white mb-2" style={{ fontFamily: 'DM Serif Display, serif' }}>
-            Still have a question?
-          </h3>
-          <p className="text-navy-400 text-sm mb-6">We usually reply within a few hours.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="mailto:cariboulogcabinresort@gmail.com" className="btn-rust text-sm px-6">Email Us</a>
-            <p className="text-navy-400 text-xs mt-2">cariboulogcabinresort@gmail.com</p>
-            <Link to="/cabins" className="border border-navy-600 text-navy-300 hover:text-white hover:border-white text-sm px-6 py-3 transition-colors">
-              Browse Cabins
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   )
