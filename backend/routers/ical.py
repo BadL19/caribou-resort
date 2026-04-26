@@ -45,7 +45,7 @@ def export_cabin_calendar(cabin_id: int, db: Session = Depends(get_db)):
     )
 
 
-@router.post("/{cabin_id}/sync-airbnb")
+@router.api_route("/{cabin_id}/sync-airbnb", methods=["GET", "POST"])
 def sync_airbnb_calendar(cabin_id: int, ical_url: str, db: Session = Depends(get_db)):
     """Import Airbnb bookings from iCal URL and block those dates."""
     cabin = db.query(Cabin).filter(Cabin.id == cabin_id).first()
