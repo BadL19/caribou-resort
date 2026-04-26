@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from routers import cabins, bookings, payments
-
+from routers.calendar import router as calendar_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -10,7 +10,7 @@ app = FastAPI(title="Caribou Log Cabin Resort API")
 
 app.add_middleware(
     CORSMiddleware,
-        allow_origins=[
+    allow_origins=[
         "http://localhost:5173",
         "http://localhost:3000",
         "https://caribou-sooty.vercel.app",
@@ -24,6 +24,7 @@ app.add_middleware(
 app.include_router(cabins.router)
 app.include_router(bookings.router)
 app.include_router(payments.router)
+app.include_router(calendar_router)
 
 
 @app.get("/")

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const photos = [
-  { url: '/images/gallery/honeymoon_ext.jpg',         caption: 'Honeymoon Cabin — Exterior' },
   { url: '/images/gallery/honeymoon_ext2.jpg',        caption: 'Honeymoon Cabin — Exterior' },
+  { url: '/images/gallery/honeymoon_ext.jpg',         caption: 'Honeymoon Cabin — Exterior' },
   { url: '/images/gallery/honeymoon_kitchen.jpg',     caption: 'Honeymoon Cabin — Kitchen' },
   { url: '/images/gallery/honeymoon_bed.jpg',         caption: 'Honeymoon Cabin — Bedroom' },
   { url: '/images/gallery/cabin 2 ext.jpg',           caption: 'Cabin 2 — Exterior' },
