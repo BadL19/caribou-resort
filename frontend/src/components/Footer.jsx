@@ -79,12 +79,8 @@ export default function Footer() {
           <h4 className="text-[11px] font-medium tracking-[0.2em] uppercase text-navy-500 mb-4">Contact</h4>
           <div className="space-y-2 text-sm">
             <p className="text-navy-400">239 Carter Side Rd, Desbarats, ON</p>
-            <a href="cariboulogcabinresort@gmail.com" className="block text-navy-400 hover:text-white transition-colors">
-              cariboulogcabinresort@gmail.com
-            </a>
-            <a href="tel:+17052575434" className="block text-navy-400 hover:text-white transition-colors">
-              (705) 257-5434
-            </a>
+            <p className="text-navy-400">cariboulogcabinresort@gmail.com</p>
+            <p className="text-navy-400">(705)257-5434</p>
           </div>
           <div className="mt-5 pt-4 border-t border-navy-800 text-[12px] text-navy-600 space-y-1">
             <p>Check-in 3:00 PM &middot; Check-out 11:00 AM</p>
