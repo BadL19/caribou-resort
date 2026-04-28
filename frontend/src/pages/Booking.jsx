@@ -179,7 +179,10 @@ export default function Booking() {
   const total = cabin ? cabin.price_per_night * nights : 0
   const fmt = d => (d instanceof Date ? d : new Date(d)).toISOString().split('T')[0]
   const formComplete = dates && nights >= 2 && form.guest_name && form.email && form.phone && form.phone.replace(/\D/g, '').length >= 10 && form.num_guests && parseInt(form.num_guests) >= 1 && parseInt(form.num_guests) <= (cabin?.max_guests || 5)
- 
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)
+  const formComplete = dates && nights >= 2 && form.guest_name && isValidEmail && form.phone && form.phone.replace(/\D/g, '').length >= 10 && form.num_guests && parseInt(form.num_guests) >= 1 && parseInt(form.num_guests) <= (cabin?.max_guests || 5)
+
+
   const handleDetails = async (e) => {
     e.preventDefault()
     setFormError('')
@@ -386,6 +389,8 @@ export default function Booking() {
                       ? 'Please enter a valid phone number.'
                       : form.num_guests && parseInt(form.num_guests) > (cabin?.max_guests || 5)
                       ? 'Maximum 5 guests. Please call (705)257-5434 for larger groups.'
+                      : form.email && !isValidEmail
+                      ? 'Please enter a valid email address.'
                       : 'Fill in your dates, name, phone, email, and number of guests to continue.'}
                   </p>
                 )}
