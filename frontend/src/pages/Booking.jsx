@@ -330,6 +330,9 @@ export default function Booking() {
                       onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
                       placeholder="(705) 555-0123"
                       className="input-field" />
+                    {form.phone && form.phone.replace(/\D/g, '').length < 10 && (
+                      <p className="text-red-500 text-xs mt-1">Please enter a valid phone number.</p>
+                    )}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -337,15 +340,11 @@ export default function Booking() {
                     <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Email Address *</label>
                     <input type="email" value={form.email} required
                       onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                      onInvalid={e => {
-                        e.preventDefault()
-                        if (e.target.validity.valueMissing) e.target.setCustomValidity('Please enter your email address.')
-                        else if (e.target.validity.typeMismatch) e.target.setCustomValidity('Please enter a valid email address (e.g. name@example.com).')
-                        else e.target.setCustomValidity('')
-                      }}
-                      onInput={e => e.target.setCustomValidity('')}
                       placeholder="jane@example.com"
                       className="input-field" />
+                    {form.email && !isValidEmail && (
+                      <p className="text-red-500 text-xs mt-1">Please enter a valid email address.</p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-sand-600 uppercase tracking-wide mb-1.5">Number of Guests *</label>
