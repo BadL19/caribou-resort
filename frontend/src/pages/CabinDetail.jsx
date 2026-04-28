@@ -8,7 +8,6 @@ export default function CabinDetail() {
   const [cabin, setCabin] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activeImg, setActiveImg] = useState(0)
-  const [lightbox, setLightbox] = useState(null)
   const [dates, setDates] = useState(null)
  
   useEffect(() => {
@@ -33,8 +32,7 @@ export default function CabinDetail() {
  
   const prevImg = () => setActiveImg(i => (i - 1 + total) % total)
   const nextImg = () => setActiveImg(i => (i + 1) % total)
-  const prevLightbox = () => setLightbox(i => (i - 1 + total) % total)
-  const nextLightbox = () => setLightbox(i => (i + 1) % total)
+  
  
   return (
     <div className="bg-sand-50 min-h-screen">
@@ -44,8 +42,7 @@ export default function CabinDetail() {
         <img
           src={images[activeImg]}
           alt={cabin.name}
-          className="w-full h-full object-contain cursor-pointer"
-          onClick={() => setLightbox(activeImg)}
+          className="w-full h-full object-contain"
         />
  
         {/* Prev arrow */}
@@ -214,42 +211,6 @@ export default function CabinDetail() {
  
         </div>
       </div>
- 
-      {/* Lightbox */}
-      {lightbox !== null && (
-        <div className="fixed inset-0 bg-black/92 z-50 flex items-center justify-center p-4" onClick={() => setLightbox(null)}>
-          <button
-            onClick={e => { e.stopPropagation(); prevLightbox() }}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white text-2xl leading-none transition-colors"
-          >
-            &#8249;
-          </button>
-          <button
-            onClick={e => { e.stopPropagation(); nextLightbox() }}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center bg-black/50 hover:bg-black/80 text-white text-2xl leading-none transition-colors"
-          >
-            &#8250;
-          </button>
-          <div className="relative inline-block" onClick={e => e.stopPropagation()}>
-            <img
-              src={images[lightbox]}
-              alt={cabin.name}
-              className="block h-auto"
-              style={{ maxHeight: '85vh', maxWidth: '80vw' }}
-            />
-            <button
-              onClick={() => setLightbox(null)}
-              className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center bg-black/60 hover:bg-black/90 text-white text-lg leading-none transition-colors"
-            >
-              &times;
-            </button>
-            <p className="text-white/40 text-xs text-center mt-2">
-              {lightbox + 1} / {total}
-            </p>
-          </div>
-        </div>
-      )}
- 
     </div>
   )
 }
